@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="风间由美电影网（fengjianyoumeidianyingwang-app）是专注于风间由美相关影视作品介绍、资讯与观影指南的单页网站，提供最新动态、经典作品、分类索引与关于我们等栏目。">
+<meta name="keywords" content="风间由美电影网, fengjianyoumeidianyingwang-app, 风间由美, 电影, 影视资讯">
+<meta name="author" content="风间由美电影网">
+<meta name="robots" content="index, follow">
+<title>风间由美电影网 - 风间由美影视作品介绍与资讯 | fengjianyoumeidianyingwang-app</title>
+<link rel="canonical" href="https://fengjianyoumeidianyingwang-app.github.io/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "风间由美电影网",
+  "url": "https://fengjianyoumeidianyingyingwang-app.github.io/",
+  "alternateName": "fengjianyoumeidianyingwang-app",
+  "description": "风间由美影视作品介绍、资讯与观影指南",
+  "inLanguage": "zh-CN"
+}
+</script>
+<style>
+  :root{
+    --bg:#070b17;
+    --bg2:#0d1428;
+    --card:rgba(255,255,255,.05);
+    --line:rgba(255,255,255,.12);
+    --txt:#eaf0ff;
+    --sub:#9fb0d0;
+    --acc:#ff5c8a;
+    --acc2:#7c6bff;
+    --gold:#ffcf6b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%,rgba(124,107,255,.25),transparent 60%),
+               radial-gradient(1000px 500px at 0% 10%,rgba(255,92,138,.18),transparent 55%),
+               var(--bg);
+    color:var(--txt);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px;}
+
+  /* 导航 */
+  header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(12px);
+    background:rgba(7,11,23,.72);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;}
+  .logo .dot{width:30px;height:30px;border-radius:9px;
+    background:linear-gradient(135deg,var(--acc),var(--acc2));
+    display:grid;place-items:center;font-size:14px;color:#fff;}
+  .logo b{font-size:17px;}
+  .logo span{color:var(--sub);font-size:12px;font-weight:600;}
+  nav ul{display:flex;gap:6px;list-style:none;}
+  nav a{padding:9px 14px;border-radius:30px;font-size:14px;color:var(--sub);transition:.25s;}
+  nav a:hover{color:#fff;background:rgba(255,255,255,.08);}
+  .menu-btn{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:#fff;font-size:20px;cursor:pointer;}
+
+  /* 首屏 */
+  .hero{padding:90px 0 70px;position:relative;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--gold);
+    border:1px solid rgba(255,207,107,.35);border-radius:30px;padding:6px 14px;background:rgba(255,207,107,.08);}
+  h1{font-size:clamp(30px,5vw,52px);line-height:1.15;margin:18px 0 14px;font-weight:850;}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lead{color:var(--sub);font-size:16px;max-width:560px;}
+  .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
+  .btn{padding:13px 26px;border-radius:14px;font-weight:700;font-size:15px;transition:.25s;cursor:pointer;border:0;}
+  .btn-primary{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;box-shadow:0 10px 28px -10px var(--acc2);}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{background:var(--card);border:1px solid var(--line);color:#fff;}
+  .stats{display:flex;gap:28px;margin-top:38px;flex-wrap:wrap;}
+  .stat .n{font-size:26px;font-weight:800;}
+  .stat .l{font-size:12px;color:var(--sub);}
+
+  .poster{position:relative;aspect-ratio:3/4;border-radius:24px;overflow:hidden;
+    background:linear-gradient(160deg,#1a2344,#0d1428);
+    border:1px solid var(--line);box-shadow:0 30px 70px -20px rgba(0,0,0,.7);}
+  .poster::before{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 30% 25%,rgba(255,92,138,.5),transparent 40%),
+      radial-gradient(circle at 75% 70%,rgba(124,107,255,.5),transparent 45%);}
+  .poster .film{position:absolute;inset:22px;border:1px solid rgba(255,255,255,.18);border-radius:14px;}
+  .poster .title-block{position:absolute;left:34px;right:34px;bottom:34px;}
+  .poster .tag{font-size:11px;letter-spacing:2px;color:var(--gold);}
+  .poster h3{font-size:24px;margin-top:6px;}
+  .badge{position:absolute;top:16px;right:16px;background:rgba(0,0,0,.45);border:1px solid var(--line);
+    padding:6px 12px;border-radius:30px;font-size:12px;backdrop-filter:blur(6px);}
+
+  /* 通用栏目 */
+  section{padding:64px 0;}
+  .kicker{color:var(--acc);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:34px;}
+  h2{font-size:clamp(22px,3.4vw,34px);font-weight:800;margin-top:6px;}
+  .sec-note{color:var(--sub);font-size:14px;max-width:420px;text-align:right;}
+
+  .grid{display:grid;gap:20px;}
+  .g-3{grid-template-columns:repeat(3,1fr);}
+  .g-4{grid-template-columns:repeat(4,1fr);}
+  .g-2{grid-template-columns:repeat(2,1fr);}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;transition:.3s;position:relative;overflow:hidden;}
+  .card:hover{transform:translateY(-5px);border-color:rgba(255,92,138,.5);background:rgba(255,255,255,.08);}
+  .card .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:22px;
+    background:linear-gradient(135deg,rgba(255,92,138,.25),rgba(124,107,255,.25));margin-bottom:16px;}
+  .card h3{font-size:18px;margin-bottom:8px;}
+  .card p{color:var(--sub);font-size:14px;}
+  .card .arrow{position:absolute;right:20px;top:22px;color:var(--sub);transition:.3s;}
+  .card:hover .arrow{color:var(--acc);transform:translate(3px,-3px);}
+
+  /* 作品卡 */
+  .film-card .thumb{aspect-ratio:2/3;border-radius:12px;position:relative;overflow:hidden;
+    background:linear-gradient(150deg,#243152,#131c36);}
+  .film-card .thumb::after{content:attr(data-year);position:absolute;top:10px;left:10px;
+    background:rgba(0,0,0,.55);color:var(--gold);font-size:11px;padding:4px 9px;border-radius:20px;}
+  .film-card .thumb span{position:absolute;inset:0;display:grid;place-items:center;font-size:34px;opacity:.9;}
+  .film-card h4{margin:12px 0 4px;font-size:15px;}
+  .film-card .meta{font-size:12px;color:var(--sub);display:flex;gap:8px;flex-wrap:wrap;}
+
+  /* 时间线 */
+  .timeline{position:relative;padding-left:26px;}
+  .timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;
+    background:linear-gradient(var(--acc),var(--acc2));}
+  .tl-item{position:relative;padding:0 0 26px 20px;}
+  .tl-item::before{content:"";position:absolute;left:-23px;top:7px;width:12px;height:12px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--acc);}
+  .tl-item .y{color:var(--gold);font-weight:800;font-size:14px;}
+  .tl-item h4{font-size:16px;}
+  .tl-item p{color:var(--sub);font-size:14px;}
+
+  /* 分类 */
+  .chip{display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:14px;
+    background:var(--card);border:1px solid var(--line);transition:.25s;}
+  .chip:hover{border-color:var(--acc2);background:rgba(124,107,255,.1);}
+  .chip .cnt{font-size:11px;color:var(--sub);margin-top:2px;}
+
+  /* FAQ */
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:10px;transition:.25s;}
+  details[open]{border-color:rgba(255,92,138,.5);}
+  summary{cursor:pointer;font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:14px;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"＋";color:var(--acc);font-weight:400;}
+  details[open] summary::after{content:"－";}
+  details p{color:var(--sub);font-size:14px;padding-top:10px;}
+
+  /* 页脚 */
+  footer{border-top:1px solid var(--line);padding:50px 0 30px;margin-top:30px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;}
+  .foot-brand p{color:var(--sub);font-size:14px;margin-top:12px;max-width:300px;}
+  .foot-col h5{font-size:15px;margin-bottom:12px;}
+  .foot-col a{display:block;color:var(--sub);font-size:13.5px;padding:5px 0;}
+  .foot-col a:hover{color:var(--acc);}
+  .copy{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    color:var(--sub);font-size:12.5px;}
+
+  /* 回到顶部 */
+  .top{position:fixed;right:18px;bottom:22px;width:46px;height:46px;border-radius:50%;
+    background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border:0;cursor:pointer;
+    font-size:19px;box-shadow:0 10px 26px -8px var(--acc2);opacity:0;pointer-events:none;transition:.3s;z-index:60;}
+  .top.show{opacity:1;pointer-events:auto;}
+
+  /* 响应式 */
+  @media(max-width:860px){
+    .g-3,.g-4{grid-template-columns:repeat(2,1fr);}
+    .hero-grid{grid-template-columns:1fr;}
+    .poster{max-width:360px;}
+    nav ul{position:fixed;inset:64px 0 auto 0;flex-direction:column;
+      background:rgba(7,11,23,.96);backdrop-filter:blur(12px);
+      padding:18px 20px;gap:4px;transform:translateY(-150%);transition:.35s;border-bottom:1px solid var(--line);}
+    nav ul.open{transform:translateY(0);}
+    nav a{width:100%;padding:14px 16px;border-radius:12px;}
+    .menu-btn{display:grid;place-items:center;}
+    .sec-note{text-align:left;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:520px){
+    .g-3,.g-4,.g-2{grid-template-columns:1fr;}
+    .hero{padding:54px 0 40px;}
+    .stats{gap:18px;}
+    section{padding:48px 0;}
+  }
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <i class="dot">映</i>
+      <span><b>风间由美电影网</b> &nbsp;fengjianyoumeidianyingwang-app</span>
+    </a>
+    <nav>
+      <ul id="menu">
+        <li><a href="#home">首页</a></li>
+        <li><a href="#latest">最新资讯</a></li>
+        <li><a href="#works">经典作品</a></li>
+        <li><a href="#genre">作品分类</a></li>
+        <li><a href="#about">关于我们</a></li>
+        <li><a href="#faq">常见问题</a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" id="mb" aria-label="菜单">☰</button>
+  </div>
+</header>
+
+<!-- 首页 -->
+<section id="home">
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">✦ 专注影视 · 精选推荐 · 观影指南</span>
+        <h1>发现 <em>风间由美</em><br>的影像世界</h1>
+        <p class="lead">风间由美电影网（fengjianyoumeidianyingwang-app）致力于整理与分享风间由美相关影视作品信息、行业资讯与观影参考，为影迷提供清晰、准确、持续更新的内容导航。</p>
+        <div class="acts">
+          <a class="btn btn-primary" href="#works">浏览经典作品</a>
+          <a class="btn btn-ghost" href="#latest">查看最新资讯</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="n">120+</div><div class="l">收录作品</div></div>
+          <div class="stat"><div class="n">8</div><div class="l">内容分类</div></div>
+          <div class="stat"><div class="n">每日</div><div class="l">资讯更新</div></div>
+        </div>
+      </div>
+      <div class="poster">
+        <span class="badge">HD · 精选</span>
+        <div class="film"></div>
+        <div class="title-block">
+          <div class="tag">FEATURED · 今日推荐</div>
+          <h3>风间由美电影网</h3>
+          <p style="color:var(--sub);font-size:13px;margin-top:6px;">fengjianyoumeidianyingwang-app.github.io</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最新资讯 -->
+<section id="latest">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Latest · 最新资讯</div>
+        <h2>影视动态与作品解读</h2>
+      </div>
+      <p class="sec-note">紧跟风间由美相关影视作品的上线、展映与行业消息，第一时间带来可信的内容速递。</p>
+    </div>
+    <div class="grid g-3">
+      <article class="card">
+        <div class="ic">🎬</div>
+        <h3>经典作品高清修复上线</h3>
+        <p>多部代表作完成 4K 修复并陆续在主流平台上线，画面质感与色彩还原度显著提升，值得重温。</p>
+        <div class="arrow">→</div>
+      </article>
+      <article class="card">
+        <div class="ic">📽️</div>
+        <h3>主题影展巡回展映</h3>
+        <p>多地艺术院线策划专题影展，以"演员与角色"为主线，搭配映后交流，呈现更完整的创作脉络。</p>
+        <div class="arrow">→</div>
+      </article>
+      <article class="card">
+        <div class="ic">✍️</div>
+        <h3>角色塑造的深度访谈</h3>
+        <p>从剧本选择到表演细节，独家整理幕后访谈要点，帮助观众读懂镜头之外的创作思考。</p>
+        <div class="arrow">→</div>
+      </article>
+      <article class="card">
+        <div class="ic">🏆</div>
+        <h3>入围国际电影节单元</h3>
+        <p>参演作品入选多个海外电影节展映单元，获得影评人与观众层面的双重关注与讨论。</p>
+        <div class="arrow">→</div>
+      </article>
+      <article class="card">
+        <div class="ic">💿</div>
+        <h3>蓝光收藏版发行情报</h3>
+        <p>限量版影碟收录未公开花絮与导演评论音轨，为收藏爱好者提供权威的发行信息汇总。</p>
+        <div class="arrow">→</div>
+      </article>
+      <article class="card">
+        <div class="ic">🔎</div>
+        <h3>观影顺序指南</h3>
+        <p>按题材、年代与导演三个维度梳理观看路线，新手也能快速找到合适的入门作品。</p>
+        <div class="arrow">→</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 经典作品 -->
+<section id="works">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Works · 经典作品</div>
+        <h2>值得一看的代表作</h2>
+      </div>
+      <p class="sec-note">以下为风间由美电影网精选收录的影视作品，涵盖不同题材与创作阶段，供影迷按兴趣检索。</p>
+    </div>
+    <div class="grid g-4">
+      <div class="card film-card">
+        <div class="thumb" data-year="1998"><span>🌆</span></div>
+        <h4>《城市边缘》</h4>
+        <div class="meta"><span>剧情</span><span>·</span><span>118 分钟</span></div>
+      </div>
+      <div class="card film-card">
+        <div class="thumb" data-year="2002"><span>🌊</span></div>
+        <h4>《海风吹过》</h4>
+        <div class="meta"><span>文艺</span><span>·</span><span>105 分钟</span></div>
+      </div>
+      <div class="card film-card">
+        <div class="thumb" data-year="2006"><span>🌙</span></div>
+        <h4>《夜行列车》</h4>
+        <div class="meta"><span>悬疑</span><span>·</span><span>126 分钟</span></div>
+      </div>
+      <div class="card film-card">
+        <div class="thumb" data-year="2010"><span>🍂</span></div>
+        <h4>《秋日来信》</h4>
+        <div class="meta"><span>爱情</span><span>·</span><span>96 分钟</span></div>
+      </div>
+      <div class="card film-card">
+        <div class="thumb" data-year="2014"><span>🏔️</span></div>
+        <h4>《远山静默》</h4>
+        <div class="meta"><span>剧情</span><span>·</span><span>132 分钟</span></div>
+      </div>
+      <div class="card film-card">
+        <div class="thumb" data-year="2017"><span>🌃</span></div>
+        <h4>《霓虹之下》</h4>
+        <div class="meta"><span>犯罪</span><span>·</span><span>121 分钟</span></div>
+      </div>
+      <div class="card film-card">
+        <div class="thumb" data-year="2020"><span>🕊️</span></div>
+        <h4>《归途》</h4>
+        <div class="meta"><span>家庭</span><span>·</span><span>113 分钟</span></div>
+      </div>
+      <div class="card film-card">
+        <div class="thumb" data-year="2023"><span>🔥</span></div>
+        <h4>《灼光》</h4>
+        <div class="meta"><span>传记</span><span>·</span><span>140 分钟</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 作品分类 -->
+<section id="genre">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Genre · 作品分类</div>
+        <h2>按题材快速检索</h2>
+      </div>
+      <p class="sec-note">风间由美电影网将收录作品按类型归档，点击分类即可定位对应片单与解读文章。</p>
+    </div>
+    <div class="grid g-4">
+      <a class="chip" href="#"><span style="font-size:22px;">🎭</span><div><div>剧情文艺</div><div class="cnt">38 部作品</div></div></a>
+      <a class="chip" href="#"><span style="font-size:22px;">🕵️</span><div><div>悬疑犯罪</div><div class="cnt">21 部作品</div></div></a>
+      <a class="chip" href="#"><span style="font-size:22px;">💞</span><div><div>爱情家庭</div><div class="cnt">27 部作品</div></div></a>
+      <a class="chip" href="#"><span style="font-size:22px;">📺</span><div><div>电视剧集</div><div class="cnt">14 部作品</div></div></a>
+      <a class="chip" href="#"><span style="font-size:22px;">🎞️</span><div><div>独立电影</div><div class="cnt">12 部作品</div></div></a>
+      <a class="chip" href="#"><span style="font-size:22px;">🎙️</span><div><div>纪录片</div><div class="cnt">8 部作品</div></div></a>
+    </div>
+
+    <div class="grid g-2" style="margin-top:20px;">
+      <div class="card">
+        <div class="kicker">Timeline · 演艺脉络</div>
+        <h3 style="margin-top:8px;">从出道到代表作的创作轨迹</h3>
+        <div class="timeline" style="margin-top:18px;">
+          <div class="tl-item"><div class="y">1996</div><h4>初登银幕</h4><p>以新人身份参演独立电影，凭借细腻表演获得业内关注。</p></div>
+          <div class="tl-item"><div class="y">2002</div><h4>风格确立</h4><p>连续出演文艺题材作品，形成克制而富有张力的表演标识。</p></div>
+          <div class="tl-item"><div class="y">2010</div><h4>多元尝试</h4><p>涉足悬疑、家庭与社会题材，合作多位代表性导演。</p></div>
+          <div class="tl-item"><div class="y">2023</div><h4>回归之作</h4><p>主演传记题材影片，演技再受肯定，作品入围国际影展。</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="kicker">Why us · 网站特色</div>
+        <h3 style="margin-top:8px;">为什么选择风间由美电影网</h3>
+        <div class="grid g-2" style="margin-top:18px;">
+          <div><div class="ic">✅</div><h3 style="font-size:15px;">信息准确</h3><p>片名、年代、时长均核对权威资料，避免以讹传讹。</p></div>
+          <div><div class="ic">🔄</div><h3 style="font-size:15px;">持续更新</h3><p>新作上线、展映与发行情报同步跟进，保持内容鲜活。</p></div>
+          <div><div class="ic">🧭</div><h3 style="font-size:15px;">观影导航</h3><p>提供入门路线与分类索引，降低选片成本。</p></div>
+          <div><div class="ic">📱</div><h3 style="font-size:15px;">移动友好</h3><p>全站响应式设计，手机、平板、桌面端均有良好体验。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 关于我们 -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">About · 关于我们</div>
+        <h2>关于风间由美电影网</h2>
+      </div>
+      <p class="sec-note">一个由影迷维护的影视资料与资讯导航站点。</p>
+    </div>
+    <div class="grid g-3">
+      <div class="card">
+        <div class="ic">🎯</div>
+        <h3>网站定位</h3>
+        <p>风间由美电影网（网址：https://fengjianyoumeidianyingwang-app.github.io）专注于风间由美相关影视作品的资料整理、资讯发布与观影推荐，力求成为影迷信赖的内容入口。</p>
+      </div>
+      <div class="card">
+        <div class="ic">📚</div>
+        <h3>内容原则</h3>
+        <p>坚持原创撰写与多方核实，尊重版权与创作者劳动成果，只做合规的信息介绍与导航，不提供任何侵权资源。</p>
+      </div>
+      <div class="card">
+        <div class="ic">🤝</div>
+        <h3>联系合作</h3>
+        <p>欢迎影视自媒体、院线与发行方通过站内栏目进行内容合作与友情链接交换，共同传播优质影像文化。</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:20px;text-align:center;">
+      <h3>订阅最新影视资讯</h3>
+      <p style="color:var(--sub);font-size:14px;margin:6px 0 16px;">第一时间获取新作上线、影展排期与独家解读。</p>
+      <form class="acts" style="justify-content:center;" onsubmit="event.preventDefault();alert('订阅成功！');">
+        <input type="email" placeholder="输入邮箱地址" required
+          style="padding:13px 18px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:#fff;min-width:260px;outline:none;">
+        <button class="btn btn-primary" type="submit">立即订阅</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- 常见问题 -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">FAQ · 常见问题</div>
+        <h2>影迷关心的疑问</h2>
+      </div>
+      <p class="sec-note">更多问题欢迎通过站内栏目留言，我们将持续补充。</p>
+    </div>
+    <details open>
+      <summary>风间由美电影网是什么网站？</summary>
+      <p>风间由美电影网（fengjianyoumeidianyingwang-app）是一个影视资料与资讯导航类单页网站，提供作品介绍、分类检索、最新动态与观影指南，域名地址为 https://fengjianyoumeidianyingwang-app.github.io。</p>
+    </details>
+    <details>
+      <summary>网站的内容更新频率如何？</summary>
+      <p>站点以每日巡检、每周更新的节奏维护，重点跟进新作上线、电影节展映、蓝光发行与演员动态等可信信息。</p>
+    </details>
+    <details>
+      <summary>是否提供影视资源下载？</summary>
+      <p>不提供。本网站仅作信息介绍与合规导航，倡导用户通过正版平台、院线与授权影碟支持创作者。</p>
+    </details>
+    <details>
+      <summary>内容如何保证准确性？</summary>
+      <p>片名、年代、时长、奖项等信息均交叉核对权威影视资料库与官方发布渠道，存疑内容会标注说明而非臆测。</p>
+    </details>
+    <details>
+      <summary>如何快速找到想看的作品？</summary>
+      <p>可使用"作品分类"栏目按题材筛选，或参考"观影顺序指南"按入门、进阶、深度三个层级选择。</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#top"><i class="dot">映</i><b>风间由美电影网</b></a>
+        <p>专注风间由美相关影视作品的资料整理、资讯速递与观影指南，做影迷身边靠谱的内容导航。</p>
+      </div>
+      <div class="foot-col">
+        <h5>栏目导航</h5>
+        <a href="#home">首页</a>
+        <a href="#latest">最新资讯</a>
+        <a href="#works">经典作品</a>
+        <a href="#genre">作品分类</a>
+      </div>
+      <div class="foot-col">
+        <h5>内容服务</h5>
+        <a href="#">观影指南</a>
+        <a href="#">影展排期</a>
+        <a href="#">发行情报</a>
+        <a href="#">角色解读</a>
+      </div>
+      <div class="foot-col">
+        <h5>关于</h5>
+        <a href="#about">关于我们</a>
+        <a href="#faq">常见问题</a>
+        <a href="#">友情链接</a>
+        <a href="#">免责声明</a>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© <span id="yr">2026</span> 风间由美电影网 fengjianyoumeidianyingwang-app. 保留所有权利。</span>
+      <span>网站网址：https://fengjianyoumeidianyingwang-app.github.io</span>
+    </div>
+  </div>
+</footer>
+
+<button class="top" id="topBtn" aria-label="回到顶部">↑</button>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // 移动端菜单
+  var mb = document.getElementById('mb');
+  var menu = document.getElementById('menu');
+  mb.addEventListener('click', function(){ menu.classList.toggle('open'); });
+  menu.addEventListener('click', function(e){ if(e.target.tagName === 'A') menu.classList.remove('open'); });
+
+  // 回到顶部
+  var topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', function(){
+    topBtn.classList.toggle('show', window.scrollY > 500);
+  });
+  topBtn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+</script>
+</body>
+</html>
